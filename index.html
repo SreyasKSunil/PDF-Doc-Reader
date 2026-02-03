@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Read Aloud</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.js"
+          integrity="sha512-0vYV3y2zGvM0FTEj2iQx4pL8x0o5pZ9qv+gQjP0qg0m6xgqP5r7oJ8dG6n6xjv+o1E3b5m9q8j5SxS0dXw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Mammoth.js (DOCX to HTML/Text) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js"
+          integrity="sha512-UNS2adgV+4q1kXc8tqv6rZt8Y0m5bW5bVq5wKp6m3b8Qq0pQf0u2o8QmWb8d8eHqzjQy5lZk7mXk6uG0zQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">Read Aloud</div>
+      <div class="hint">PDF, DOCX. Works on iPhone Safari and desktop browsers.</div>
+    </header>
+
+    <section class="panel">
+      <div class="row">
+        <label class="file">
+          <input id="fileInput" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+          <span>Select file</span>
+        </label>
+
+        <button id="btnClear" class="btn secondary" type="button">Clear</button>
+      </div>
+
+      <div class="row">
+        <div class="control">
+          <label for="voiceSelect">Voice</label>
+          <select id="voiceSelect"></select>
+        </div>
+
+        <div class="control">
+          <label for="rate">Speed <span id="rateLabel">1.0</span></label>
+          <input id="rate" type="range" min="0.5" max="2" step="0.05" value="1" />
+        </div>
+      </div>
+
+      <div class="row buttons">
+        <button id="btnPlay" class="btn primary" type="button">Play</button>
+        <button id="btnPause" class="btn secondary" type="button">Pause</button>
+        <button id="btnStop" class="btn danger" type="button">Stop</button>
+      </div>
+
+      <div class="row">
+        <div class="status">
+          <div id="statusText">Load a file to start.</div>
+          <div class="sub">
+            Tap any line to start reading from there.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="content">
+      <div id="docMeta" class="docmeta"></div>
+      <div id="textView" class="textview" aria-label="Document text"></div>
+    </main>
+
+    <footer class="footer">
+      <div>Client-side only. Nothing is uploaded.</div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
