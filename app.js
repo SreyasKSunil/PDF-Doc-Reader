@@ -397,7 +397,7 @@ function stopPlayback() {
 /* File loading */
 
 async function extractTextFromPDF(arrayBuffer) {
-  const pdfjsLib = window["pdfjs-dist/build/pdf"];
+  const pdfjsLib = window.pdfjsLib;
   if (!pdfjsLib) throw new Error("PDF.js missing");
 
   // Worker configuration for CDN usage
